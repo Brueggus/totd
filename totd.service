@@ -1,0 +1,11 @@
+[Unit]
+Description=Trick Or Treat Daemon DNS proxy
+After=syslog.target
+WantedBy=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/totd
+
+[Install]
+WantedBy=multi-user.target
