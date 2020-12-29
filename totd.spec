@@ -23,8 +23,7 @@ Summary:        Trick Or Treat Daemon
 License:        BSD
 Group:          Productivity/Networking/DNS/Servers
 Url:            http://www.dillema.net/software/totd.html
-Source0:        %{name}-%{version}.tar.bz2
-Source1:        %{name}.service
+Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -36,7 +35,7 @@ mechanisms currently in use are:
  * IPv6/IPv4 Network Address and Packet Translation (NAT-PT) implemented e.g.
    by Cisco.
  * Application level translators as the faithd implemented by the KAME project.
-   See faithd(8) on BSD/Kame. 
+   See faithd(8) on BSD/Kame.
 
 These translators translate map IPv4 to IPv6 connections and back in some way.
 In order for an application to connect through such a translator to the world
@@ -62,11 +61,11 @@ make %{?_smp_mflags}
 install -D -m 0755 totd %{buildroot}%{_sbindir}/totd
 install -D -m 0644 totd.conf.sample %{buildroot}%{_sysconfdir}/totd.conf
 install -D -m 0644 totd.8 %{buildroot}%{_mandir}/man8/totd.8
-install -D -m 0644 %{SOURCE1} %{buildroot}/usr/lib/systemd/system/totd.service
+install -D -m 0644 totd.service %{buildroot}/usr/lib/systemd/system/totd.service
 
 %files
 %defattr(-,root,root)
-%doc README COPYRIGHT
+%doc README LICENSE INSTALL
 %{_sbindir}/totd
 %config(noreplace) %{_sysconfdir}/totd.conf
 %{_mandir}/man8/totd.8*
